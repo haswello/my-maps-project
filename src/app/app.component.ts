@@ -9,9 +9,9 @@ import { MarkerService } from './services/marker.service';
 })
 export class AppComponent {
 
-  zoom: number = 11;
-  lat: number = 42.868164;
-  lng: number = -70.889071;
+  zoom: number = 5;
+  lat: number = 14.650642183309335;
+  lng: number = 91.44985124902337;
 
   markerName:string;
   markerLat:string;
@@ -39,7 +39,7 @@ export class AppComponent {
           lng: $event.coords.lng,
           draggable:false
       }
-      this.markers.push(newMarker);
+     // this.markers.push(newMarker);
   }
   
   markerDragEnd(marker:any, $event:any){
@@ -55,6 +55,9 @@ export class AppComponent {
       
       var newLat = $event.coords.lat;
       var newLng = $event.coords.lng;
+      
+      this._markerService.updateMarker(updMarker, newLat, newLng);
+      
   }
 
   addMarker(){
@@ -76,6 +79,17 @@ export class AppComponent {
       }
        this.markers.push(newMarker);
        this._markerService.addMarker(newMarker);
+  }
+
+  removeMarker(marker){
+     console.log("Remove marker");
+      for(var i = 0;i < this.markers.length; i++){
+          if(marker.lat == this.markers[i].lat && marker.lng == this.markers[i].lng){
+              this.markers.splice(i,1);
+          }
+      }
+      
+      this._markerService.removeMarker(marker);
   }
 }
 

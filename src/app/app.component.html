@@ -1,6 +1,3 @@
-
-
-
    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -10,13 +7,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">My Maps Project</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+            <!--
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -44,8 +43,11 @@
                         (dragEnd)="markerDragEnd(m, $event)"
                         >
                         <sebm-google-map-info-window>
+                            <strong>{{ m.name}}</strong><br>
                             <strong>{{ m.lat}}</strong><br>
                             <strong>{{ m.lng}}</strong>
+                            <br>
+                            <a class="delete" (click)="removeMarker(m)">Delete</a>
                         </sebm-google-map-info-window>
                      </sebm-google-map-marker>
                   </sebm-google-map>
